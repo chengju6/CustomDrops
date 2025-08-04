@@ -1,0 +1,94 @@
+name: CustomDrops
+version: 2.7
+main: com.chengju.customdrops.CustomDropsPlugin
+api-version: 1.13
+# 命令注册
+commands:
+  cdreload:
+    description: 重新加载插件配置
+    usage: /cdreload
+    permission: customdrops.command.reload
+    permission-message: "§c你没有权限使用此命令!"
+
+  ip:
+    description: 设置全局概率倍率
+    usage: /ip <倍率>
+    permission: customdrops.command.ip
+    permission-message: "§c你没有权限使用此命令!"
+
+  mylogs:
+    description: 查看我的物品获取记录
+    usage: /mylogs [天数]
+    permission: customdrops.command.mylogs
+    permission-message: "§c你没有权限使用此命令!"
+
+  mybonus:
+    description: 查看我的概率加成信息
+    usage: /mybonus
+    permission: customdrops.command.mybonus
+    permission-message: "§c你没有权限使用此命令!"
+
+  customdrop:
+    description: 主命令
+    usage: /customdrop [reload|ip|mylogs|mybonus]
+    aliases: [cd]
+    permission: customdrops.command.main
+    permission-message: "§c你没有权限使用此命令!"
+
+# 权限节点
+permissions:
+  customdrops.command.*:
+    description: 所有命令权限
+    default: op
+    children:
+      customdrops.command.reload: true
+      customdrops.command.ip: true
+      customdrops.command.mylogs: true
+      customdrops.command.mybonus: true
+      customdrops.command.main: true
+
+  customdrops.command.reload:
+    description: 允许重新加载插件配置
+    default: false
+
+  customdrops.command.ip:
+    description: 允许设置全局概率倍率
+    default: false
+
+  customdrops.command.mylogs:
+    description: 允许查看物品获取记录
+    default: true
+
+  customdrops.command.mybonus:
+    description: 允许查看概率加成信息
+    default: true
+
+  customdrops.command.main:
+    description: 允许使用主命令
+    default: true
+
+  # 掉落概率加成权限
+  cu.drop.*:
+    description: 所有掉落概率加成权限
+    default: false
+    children:
+      cu.drop.150: true
+      cu.drop.200: true
+      cu.drop.260: true
+      cu.drop.350: true
+
+  cu.drop.150:
+    description: "+50% 掉落概率加成"
+    default: false
+
+  cu.drop.200:
+    description: "+75% 掉落概率加成"
+    default: false
+
+  cu.drop.260:
+    description: "+100% 掉落概率加成"
+    default: false
+
+  cu.drop.350:
+    description: "+150% 掉落概率加成"
+    default: false
